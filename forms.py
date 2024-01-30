@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateField, SelectField, SubmitField, FloatField, PasswordField, ValidationError, IntegerField
+from wtforms import StringField, DateField, SelectField, SubmitField, FloatField, PasswordField, ValidationError, IntegerField, FileField
 from wtforms.validators import DataRequired, Length, NumberRange
 from models import Post
-from grocery_app.extensions import bcrypt
+from extensions import bcrypt
 
 class PostForm(FlaskForm):
   """Form for creating a new post"""
