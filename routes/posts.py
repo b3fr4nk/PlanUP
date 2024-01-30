@@ -5,7 +5,7 @@ from forms import PostForm
 
 posts = Blueprint("posts", __name__)
 
-@posts.route('/posts/new')
+@posts.route('/posts/new', methods=['POST'])
 def newPost():
   form = PostForm()
 
@@ -20,3 +20,4 @@ def newPost():
       score = 0
       #TODO add comments and owner when they are implemented
     )
+
