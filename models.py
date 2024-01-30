@@ -10,7 +10,7 @@ class Post(db.Model):
     # comments = db.relationship("Comment", back_populates="post")
     description = db.Column(db.Text)
     # uncomment when users are implemented
-    # created_by_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    # created_by = db.relationship('User')
+    # owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    # owner = db.relationship('User')
     media = db.Column(db.Text)
     score = db.Column(db.Integer)
