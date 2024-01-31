@@ -2,17 +2,20 @@ from flask import Blueprint, request, render_template, redirect, url_for, flash
 from datetime import date, datetime
 from models import Post
 from forms import PostForm
+from werkzeug.utils import secure_filename
 
 posts = Blueprint("posts", __name__)
 
 @posts.route('/posts/new', methods=['GET', 'POST'])
-def newPost():
+def new_post():
   form = PostForm()
 
   if form.validate_on_submit():
     print('valid')
-    filename = secure_filename(form.file.data.filename)
-    form.file.data.save('uploads/' + filename)
+    filename = ''
+    if form.media.data is not None:
+      filename = secure_filename(form.media.data.filename)
+      form.file.data.save('uploads/' + filename)
     
     new_post = Post(
       title = form.title.data,
@@ -24,5 +27,5 @@ def newPost():
 
     flash('post added')
 
-    return redirect(url_for(''))
+    return render_template('index.html')
   return render_template('new_post.html', form=form)
