@@ -9,5 +9,5 @@ class PostForm(FlaskForm):
 
   title = StringField('Title', validators=[DataRequired()])
   description = StringField('Description', validators=[DataRequired()])
-  media = FileField('Media', )
+  media = FileField('Media')
   submit = SubmitField('Submit')
