@@ -8,7 +8,6 @@ from extensions import app, db
 
 posts = Blueprint("posts", __name__)
 
-
 @posts.route('/posts/new', methods=['GET', 'POST'])
 def new_post():
   form = PostForm()
@@ -36,7 +35,6 @@ def new_post():
     return redirect(url_for('posts.all_posts'))
   return render_template('new_post.html', form=form)
 
-
 @posts.route('/posts', methods=['GET'])
 def all_posts():
   all_posts = Post.query.all()
@@ -48,3 +46,11 @@ def get_post(post_id):
   post = Post.query.get(post_id)
 
   return render_template('post.html', post=post)
+
+@posts.route('/posts/delete/<post_id>', methods=['GET'])
+def delete_post(post_id):
+  post = Post.query.filter_by(id=post_id).delete()
+  db.session.commit()
+
+  return redirect(url_for('posts.all_posts'))
+
