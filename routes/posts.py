@@ -42,3 +42,9 @@ def all_posts():
   all_posts = Post.query.all()
   print(all_posts)
   return render_template('browse.html', all_posts=all_posts)
+
+@posts.route('/posts/<post_id>', methods=['GET'])
+def get_post(post_id):
+  post = Post.query.get(post_id)
+
+  return render_template('post.html', post=post)
