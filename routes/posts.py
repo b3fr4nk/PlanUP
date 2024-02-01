@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from datetime import date, datetime
 from models import Post
-from forms import NewPostForm
+from forms import NewPostForm, UpdatePostForm
 from werkzeug.utils import secure_filename
 
 from extensions import app, db
@@ -41,11 +41,27 @@ def all_posts():
   print(all_posts)
   return render_template('browse.html', all_posts=all_posts)
 
-@posts.route('/posts/<post_id>', methods=['GET'])
+@posts.route('/posts/<post_id>', methods=['GET', 'POST'])
 def get_post(post_id):
   post = Post.query.get(post_id)
+  form = UpdatePostForm(obj=post)
 
-  return render_template('post.html', post=post)
+  if form.validate_on_submit():
+    post.title = form.title.data
+    post.description = form.description.data
+
+    # TODO find a way to update the file without throwing an error when there is no update
+    # try:
+
+    #   if form.media.data is not None:
+    #     filename = secure_filename(form.media.data.filename)
+    #     form.file.data.save('uploads/' + filename)
+    #     post.media = filename
+    # except:
+    #   print('invalid file type')
+  db.session.commit()
+
+  return render_template('post.html', post=post, form=form)
 
 @posts.route('/posts/delete/<post_id>', methods=['GET'])
 def delete_post(post_id):

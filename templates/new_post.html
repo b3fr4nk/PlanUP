@@ -15,5 +15,13 @@
     {% endfor %}
   </ul>
 
+  {{form.media.label}} {{form.media}}
+
+  <ul>
+    {% for error in form.media.errors %}
+    <li class="error">{{ error }}</li>
+    {% endfor %}
+  </ul>
+
   <input type="submit" value="Submit" />
 </form>
