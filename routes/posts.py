@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from datetime import date, datetime
 from models import Post
-from forms import NewPostForm, UpdatePostForm
+from forms import PostForm
 from werkzeug.utils import secure_filename
 
 from extensions import app, db
@@ -10,7 +10,7 @@ posts = Blueprint("posts", __name__)
 
 @posts.route('/posts/new', methods=['GET', 'POST'])
 def new_post():
-  form = NewPostForm()
+  form = PostForm()
 
   if form.validate_on_submit():
     print('valid')
@@ -44,7 +44,7 @@ def all_posts():
 @posts.route('/posts/<post_id>', methods=['GET', 'POST'])
 def get_post(post_id):
   post = Post.query.get(post_id)
-  form = UpdatePostForm(obj=post)
+  form = PostForm(obj=post)
 
   if form.validate_on_submit():
     post.title = form.title.data
