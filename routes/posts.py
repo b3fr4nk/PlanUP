@@ -14,10 +14,11 @@ def new_post():
 
   if form.validate_on_submit():
     print('valid')
-    filename = ''
-    if form.media.data is not None:
+    try:
       filename = secure_filename(form.media.data.filename)
       form.file.data.save('uploads/' + filename)
+    except AttributeError:
+      filename = ''
     
     new_post = Post(
       title = form.title.data,
@@ -50,15 +51,14 @@ def get_post(post_id):
     post.title = form.title.data
     post.description = form.description.data
 
-    # TODO find a way to update the file without throwing an error when there is no update
-    # try:
+    try:
+      filename = secure_filename(form.media.data.filename)
+      form.file.data.save('uploads/' + filename)
+    except AttributeError:
+      filename = post.media
 
-    #   if form.media.data is not None:
-    #     filename = secure_filename(form.media.data.filename)
-    #     form.file.data.save('uploads/' + filename)
-    #     post.media = filename
-    # except:
-    #   print('invalid file type')
+    post.media = filename
+
   db.session.commit()
 
   return render_template('post.html', post=post, form=form)
