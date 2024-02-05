@@ -8,6 +8,8 @@ import os
 app = Flask(__name__)
 app.config.from_object(Config)
 
+# Giving a runtime issue unless line 12 was included
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()

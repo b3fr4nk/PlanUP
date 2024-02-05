@@ -3,22 +3,147 @@
 {% block title %} Browse Lesson Plans-planUp {% endblock %}
 
 {% block content %} 
-    <div class="container container-fluid">
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col">
-                <div class="card">
-                    <!--Could place media in the src-->
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        {% for post in all_posts %}
-                            <h5 class="card-title">
-                                <a href="{{url_for('posts.get_post', post_id=post.id)}}">{{post.title}}</a>
-                            </h5>
-                            <p class="card-text">{{post.description}}</p>
-                        {% endfor %} 
-                    </div>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container justify-content-center gap-5 container-fluid">
+            <a class="navbar-brand" href="{{ url_for('pages.landing_page') }}">planUp</a>
+            <!--Navbar items next to brand-->
+            <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!--Browse Link-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('pages.browse_page') }}">
+                            Browse
+                        </a>
+                    </li>
+                    <!--About Link-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            About
+                        </a>
+                    </li>
+                    <!--Buttons-->
+                    <form class="container container-fluid justify-content-start">
+                        <!--Sign In Button-->
+                        <a href="{{ url_for('pages.signin_page') }}">
+                            <button class="btn btn-outline-success me-2" type="button">
+                                Login
+                            </button>
+                        </a>
+                        <!--Sign Up Button-->
+                        <a href="{{ url_for('pages.signup_page') }}">
+                            <button class="btn btn-outline-success me-2" type="button">
+                                Sign Up
+                            </button>
+                        </a>
+                    </form>
+                </ul>
+          </div>
+        </div>
+    </nav>
+    <!--End of Navbar-->
+    <!--Card Section-->
+    <div class="container container-fluid mt-4">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="https://fakeimg.pl/200x200" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
+              </div>
             </div>
+            <!--Card 2-->
         </div>
     </div>
+    <!--
+    Removed since there is no data yet
+    {% for post in all_posts %}
+        <h5 class="card-title">
+            <a href="{{url_for('posts.get_post', post_id=post.id)}}">{{post.title}}</a>
+        </h5>
+        <p class="card-text">{{post.description}}</p>
+    {% endfor %} 
+    -->
+    <!--Footer-->
+    <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top text-center">
+        <div class="col mb-3 m-5">
+            <h5>planUp</h5>
+            <p class="text-muted">&copy;2024</p>
+        </div>
+        <!--Quick Links-->
+        <div class="col mb-3">
+            <h5>Quick Links</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+                        Home
+                    </a>
+                </li>
+                <!--Browse-->
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+                        Browse
+                    </a>
+                </li>
+                <!--Our Story/About-->
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+                        Our Story
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--Section 2-->
+        <div class="col mb-3">
+            <h5>Quick Links</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+                        Home
+                    </a>
+                </li>
+                <!--Browse-->
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+                        Browse
+                    </a>
+                </li>
+                <!--Our Story/About-->
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+                        Our Story
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--Section 3-->
+        <div class="col mb-3">
+            <h5>Quick Links</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+                        Home
+                    </a>
+                </li>
+                <!--Browse-->
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+                        Browse
+                    </a>
+                </li>
+                <!--Our Story/About-->
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+                        Our Story
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!--End of Footer Section-->
 {% endblock %}
