@@ -1,6 +1,7 @@
 from extensions import db
 from flask_login import UserMixin
 
+
 class Post(db.Model):
     __tablename__ = 'Post'
     id = db.Column(db.Integer, primary_key=True)

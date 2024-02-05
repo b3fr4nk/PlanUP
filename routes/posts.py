@@ -8,65 +8,68 @@ from extensions import app, db
 
 posts = Blueprint("posts", __name__)
 
+
 @posts.route('/posts/new', methods=['GET', 'POST'])
 def new_post():
-  form = PostForm()
+    form = PostForm()
 
-  if form.validate_on_submit():
-    print('valid')
-    try:
-      filename = secure_filename(form.media.data.filename)
-      form.file.data.save('uploads/' + filename)
-    except AttributeError:
-      filename = ''
-    
-    new_post = Post(
-      title = form.title.data,
-      description = form.description.data,
-      media = f'uploads/{filename}',
-      score = 0
-      #TODO add comments and owner when they are implemented
-    )
+    if form.validate_on_submit():
+        print('valid')
+        try:
+            filename = secure_filename(form.media.data.filename)
+            form.file.data.save('uploads/' + filename)
+        except AttributeError:
+            filename = ''
 
-    db.session.add(new_post)
-    db.session.commit()
+        new_post = Post(
+            title=form.title.data,
+            description=form.description.data,
+            media=f'uploads/{filename}',
+            score=0
+            # TODO add comments and owner when they are implemented
+        )
 
-    flash('post added')
+        db.session.add(new_post)
+        db.session.commit()
 
-    return redirect(url_for('posts.all_posts'))
-  return render_template('new_post.html', form=form)
+        flash('post added')
+
+        return redirect(url_for('posts.all_posts'))
+    return render_template('new_post.html', form=form)
+
 
 @posts.route('/posts', methods=['GET'])
 def all_posts():
-  all_posts = Post.query.all()
-  print(all_posts)
-  return render_template('browse.html', all_posts=all_posts)
+    all_posts = Post.query.all()
+    print(all_posts)
+    return render_template('browse.html', all_posts=all_posts)
+
 
 @posts.route('/posts/<post_id>', methods=['GET', 'POST'])
 def get_post(post_id):
-  post = Post.query.get(post_id)
-  form = PostForm(obj=post)
+    post = Post.query.get(post_id)
+    form = PostForm(obj=post)
 
-  if form.validate_on_submit():
-    post.title = form.title.data
-    post.description = form.description.data
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.description = form.description.data
 
-    try:
-      filename = secure_filename(form.media.data.filename)
-      form.file.data.save('uploads/' + filename)
-    except AttributeError:
-      filename = post.media
+        try:
+            filename = secure_filename(form.media.data.filename)
+            form.file.data.save('uploads/' + filename)
+        except AttributeError:
+            filename = post.media
 
-    post.media = filename
+        post.media = filename
 
-  db.session.commit()
+    db.session.commit()
 
-  return render_template('post.html', post=post, form=form)
+    return render_template('post.html', post=post, form=form)
+
 
 @posts.route('/posts/delete/<post_id>', methods=['GET'])
 def delete_post(post_id):
-  post = Post.query.filter_by(id=post_id).delete()
-  db.session.commit()
+    post = Post.query.filter_by(id=post_id).delete()
+    db.session.commit()
 
-  return redirect(url_for('posts.all_posts'))
-
+    return redirect(url_for('posts.all_posts'))
