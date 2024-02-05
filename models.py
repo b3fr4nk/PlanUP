@@ -6,11 +6,7 @@ class Post(db.Model):
     __tablename__ = 'Post'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text)
-    # uncomment when comments are implemented
-    # comments_id = db.Column(db.text, db.ForeignKey('comment.id'))
-    # comments = db.relationship("Comment", back_populates="post")
     description = db.Column(db.Text)
-    # uncomment when users are implemented
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     owner = db.relationship('User')
     media = db.Column(db.Text)
@@ -23,5 +19,12 @@ class User(db.Model):
     username = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
 
-    def __str__(self) -> str:
-        return self.username
+
+class Comment(db.model):
+    __tablename__ = 'Comment'
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String, nullable=False)
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_comment = db.relationship('User')
+    attached_to_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    post_comment = db.relationship('Post')
