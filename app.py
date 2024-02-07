@@ -1,10 +1,13 @@
 from extensions import app, db
 # import routes
 from routes.posts import posts
+from routes.users import users, auth
 
 from flask import Flask, request, redirect, render_template, url_for, jsonify
 
 app.register_blueprint(posts)
+app.register_blueprint(users)
+app.register_blueprint(auth)
 
 with app.app_context():
     db.create_all()

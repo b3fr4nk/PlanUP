@@ -7,7 +7,8 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text)
     description = db.Column(db.Text)
-    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    # Set nullable to false once authentication is implemented
+    owner_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=True)
     owner = db.relationship('User')
     media = db.Column(db.Text)
     score = db.Column(db.Integer)
@@ -20,11 +21,11 @@ class User(db.Model):
     password = db.Column(db.String, nullable=False)
 
 
-class Comment(db.model):
+class Comment(db.Model):
     __tablename__ = 'Comment'
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String, nullable=False)
-    created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
+    created_by = db.Column(db.Integer, db.ForeignKey('User.id'))
     user_comment = db.relationship('User')
-    attached_to_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    attached_to_id = db.Column(db.Integer, db.ForeignKey('Post.id'))
     post_comment = db.relationship('Post')
