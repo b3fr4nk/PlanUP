@@ -4,16 +4,16 @@
 
 <!--Sign Up Page-->
 {% block content %}
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light mt-2">
+  <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container justify-content-center gap-4 container-fluid mt-2">
-          <a class="navbar-brand" href="{{ url_for('pages.landing_page') }}">planUp</a>
-          <!--Navbar items next to brand-->
-          <div class="collapse navbar-collapse flex-grow-0">
-                <ul class="navbar-nav text-center">
+            <a class="navbar-brand" href="{{ url_for('users.landing_page') }}">planUp</a>
+            <!--Navbar items next to brand-->
+            <div class="collapse navbar-collapse flex-grow-0">
+                <ul class="navbar-nav">
                     <!--Browse Link-->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('pages.browse_page') }}">
+                        <a class="nav-link" href="{{ url_for('users.browse_page') }}">
                             Browse
                         </a>
                     </li>
@@ -26,20 +26,20 @@
                     <!--Buttons-->
                     <form class="container container-fluid justify-content-start">
                         <!--Sign In Button-->
-                        <a href="{{ url_for('pages.signin_page') }}">
+                        <a href="{{ url_for('users.signin') }}">
                             <button class="btn btn-outline-success me-2" type="button">
                                 Login
                             </button>
                         </a>
-                        <!--Sign In Button-->
-                        <a href="{{ url_for('pages.signup_page') }}">
+                        <!--Sign Up Button-->
+                        <a href="{{ url_for('users.signup') }}">
                             <button class="btn btn-outline-success me-2" type="button">
                                 Sign Up
                             </button>
                         </a>
                     </form>
                 </ul>
-          </div>
+            </div>
         </div>
     </nav>
     <!--End of Navbar-->
@@ -49,19 +49,17 @@
         <form class="form-group" action="" method="">
             <!--Email--> 
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Email</label>
+                <label class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control">
+                    <input>
                 </div>
             </div>
             <!--Password Field-->
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Password</label>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" required>
-                </div>
+                    <input>
             </div>
-            <a href="{{ url_for('pages.signin_page') }}" class="mr-2">Have an existing account?</a>
+            <a href="{{ url_for('users.signin') }}" class="mr-2">Have an existing account?</a>
             <button class="btn btn-md btn-primary" type="submit">Sign Up</button>
         </form>
     </div>

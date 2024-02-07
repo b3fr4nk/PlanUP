@@ -6,13 +6,13 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container justify-content-center gap-4 container-fluid mt-2">
-            <a class="navbar-brand" href="{{ url_for('pages.landing_page') }}">planUp</a>
+            <a class="navbar-brand" href="{{ url_for('users.landing_page') }}">planUp</a>
             <!--Navbar items next to brand-->
             <div class="collapse navbar-collapse flex-grow-0">
                 <ul class="navbar-nav">
                     <!--Browse Link-->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('pages.browse_page') }}">
+                        <a class="nav-link" href="{{ url_for('users.browse_page') }}">
                             Browse
                         </a>
                     </li>
@@ -25,20 +25,20 @@
                     <!--Buttons-->
                     <form class="container container-fluid justify-content-start">
                         <!--Sign In Button-->
-                        <a href="{{ url_for('pages.signin_page') }}">
+                        <a href="{{ url_for('users.signin') }}">
                             <button class="btn btn-outline-success me-2" type="button">
                                 Login
                             </button>
                         </a>
                         <!--Sign Up Button-->
-                        <a href="{{ url_for('pages.signup_page') }}">
+                        <a href="{{ url_for('users.signup') }}">
                             <button class="btn btn-outline-success me-2" type="button">
                                 Sign Up
                             </button>
                         </a>
                     </form>
                 </ul>
-          </div>
+            </div>
         </div>
     </nav>
     <!--End of Navbar-->
