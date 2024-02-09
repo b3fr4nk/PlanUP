@@ -36,3 +36,12 @@ def get_user(user_id):
     user = User.query.get(user_id)
 
     return render_template('user.html', user=user)
+
+
+@users.route('/users/delete/<user_id>', methods=['GET'])
+def delete_user(user_id):
+    user = User.query.delete(user_id)
+
+    db.session.commit()
+
+    return redirect(url_for('posts.all_posts'))
