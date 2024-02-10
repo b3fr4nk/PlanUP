@@ -23,7 +23,13 @@ def signin():
     GET: Returns sign in page
     Redirect to profile
     """
-    return render_template('signin.html')
+    form = LoginForm()
+
+    if form.validate_username and form.validate_password:
+        print('valid')
+        # Temp redirect route
+        return redirect(url_for('posts.all_posts'))
+    return render_template('signin.html', form=form)
 
 @users.route('/signup', methods=['GET', 'POST'])
 def signup():
