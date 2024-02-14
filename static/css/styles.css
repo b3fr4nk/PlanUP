@@ -1,0 +1,24 @@
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&display=swap');
+
+/* Style all elements */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.btn,
+.btn:hover {
+    background-color: #72d389;
+    border: 1px solid #72d389;
+    color: #000000;
+}
+
+body {
+    font-family: 'JetBrains Mono', -apple-system, 'sans-serif';
+}
+
+/* Style img inside of the hero section */
+.hero-img {
+    transform: rotate(4deg);
+}

@@ -1,12 +1,11 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from models import User
-from forms import SignupForm, LoginForm
+from forms import SignupForm
 
 from extensions import db, bcrypt
 
 users = Blueprint('users', __name__)
 auth = Blueprint('auth', __name__)
-
 
 @users.route('/signup', methods=['GET', 'POST'])
 def signup():
