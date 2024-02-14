@@ -6,15 +6,12 @@
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
-* [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Usage](#usage)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
-<!-- * [License](#license) -->
-
+* [DevTeam](#DevTeam)
 
 ## General Information
 - What problem does it (intend to) solve?
@@ -70,6 +67,6 @@ To do:
 ## Acknowledgements 
 - This project was inspired by Reddit
 
-## Dev Team
+## DevTeam
 Created by [@el634dev](https://github.com/el634dev) 
 Created by [@b3fr4nk](https://github.com/b3fr4nk) 
