@@ -1,35 +1,11 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from models import User
-from forms import SignupForm, LoginForm
+from forms import SignupForm
 
 from extensions import db, bcrypt
 
 users = Blueprint('users', __name__)
 auth = Blueprint('auth', __name__)
-
-@users.route('/')
-def landing_page():
-    """Return landing page"""
-    return render_template('index.html')
-
-@users.route('/browse')
-def browse_page():
-    """Return browse page"""
-    return render_template('browse.html')
-
-@users.route('/signin')
-def signin():
-    """
-    GET: Returns sign in page
-    Redirect to profile
-    """
-    form = LoginForm()
-
-    if form.validate_username and form.validate_password:
-        print('valid')
-        # Temp redirect route
-        return redirect(url_for('posts.all_posts'))
-    return render_template('signin.html', form=form)
 
 @users.route('/signup', methods=['GET', 'POST'])
 def signup():
