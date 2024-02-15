@@ -1,4 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
+from flask_login import login_user, logout_user, login_required, current_user
 from models import User
 from forms import SignupForm, LoginForm
 
@@ -17,7 +18,6 @@ def signup():
     form = SignupForm()
 
     if form.validate_on_submit():
-        print('valid')
         hashed_password = bcrypt.generate_password_hash(form.password.data)
         user = User(
             username=form.username.data,
@@ -27,11 +27,13 @@ def signup():
         db.session.add(user)
         db.session.commit()
 
+        login_user(user, remember=True)
+
         return redirect(url_for('posts.all_posts'))
     return render_template('signup.html', form=form)
 
 
-@users.route('/signin', methods=['GET'])
+@users.route('/signin', methods=['GET', ])
 def signin():
     """
     GET: Returns sign in page
@@ -40,17 +42,11 @@ def signin():
     form = LoginForm()
 
     if form.validate_on_submit():
-        print('valid')
-        hashed_password = bcrypt.generate_password_hash(form.password.data)
-        user = User(
-            username=form.username.data,
-            password=hashed_password
-        )
-
-        db.session.add(user)
-        db.session.commit()
-
-        return redirect(url_for('posts.all_posts'))
+        user = User.query.filter_by(username=form.username.data).first()
+        if user:
+            login_user(user, remember=True)
+            return redirect(url_for('posts.all_posts'))
+            
     return render_template('signin.html', form=form)
 
 
