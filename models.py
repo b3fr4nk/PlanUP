@@ -25,6 +25,7 @@ class Comment(db.Model):
     __tablename__ = 'Comment'
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String, nullable=False)
+    score = db.Column(db.Integer)
     created_by = db.Column(db.Integer, db.ForeignKey('User.id'))
     user_comment = db.relationship('User')
     attached_to_id = db.Column(db.Integer, db.ForeignKey('Post.id'))
