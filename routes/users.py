@@ -1,11 +1,12 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from models import User
-from forms import SignupForm
+from forms import SignupForm, LoginForm
 
 from extensions import db, bcrypt
 
 users = Blueprint('users', __name__)
 auth = Blueprint('auth', __name__)
+
 
 @users.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -28,6 +29,29 @@ def signup():
 
         return redirect(url_for('posts.all_posts'))
     return render_template('signup.html', form=form)
+
+
+@users.route('/signin', methods=['GET'])
+def signin():
+    """
+    GET: Returns sign in page
+    Redirect to profile
+    """
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        print('valid')
+        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        user = User(
+            username=form.username.data,
+            password=hashed_password
+        )
+
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for('posts.all_posts'))
+    return render_template('signin.html', form=form)
 
 
 @users.route('/users/<user_id>', methods=['GET'])
