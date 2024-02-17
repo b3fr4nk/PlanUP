@@ -1,264 +1,294 @@
-{% extends 'base.html' %}
-
-{% block title %} planUp-Upgrade Your Teaching Plans {% endblock %}
+{% extends 'base.html' %} {% block title %} planUp-Upgrade Your Teaching Plans
+{% endblock %}
 
 <!--Landing Page-->
 {% block content %}
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container justify-content-center gap-4 container-fluid mt-2">
-            <a class="navbar-brand" href="{{ url_for('pages.landing_page') }}">planUp</a>
-            <!--Navbar items next to brand-->
-            <div class="collapse navbar-collapse flex-grow-0">
-                <ul class="navbar-nav">
-                    <!--Browse Link-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('pages.browse_page') }}">
-                            Browse
-                        </a>
-                    </li>
-                    <!--About Link-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            About
-                        </a>
-                    </li>
-                    <!--Buttons-->
-                    <form class="container container-fluid justify-content-start">
-                        <!--Sign In Button-->
-                        <a href="{{ url_for('pages.signin') }}">
-                            <button class="btn btn-outline-success me-2" type="button">
-                                Login
-                            </button>
-                        </a>
-                        <!--Sign Up Button-->
-                        <a href="{{ url_for('users.signup') }}">
-                            <button class="btn btn-outline-success me-2" type="button">
-                                Sign Up
-                            </button>
-                        </a>
-                    </form>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!--End of Navbar-->
-    <!--Hero Section-->
-    <div class="container container-fluid d-flex mt-5">
-        <div class="flex-grow-1 ms-3">
-            <!--Hero Title-->
-            <div class="col-lg-6">
-                <div class="lc-block mb-3">
-                    <div editable="rich">
-                        <h2 class="fw-bold h2">
-                            Leveling up your teaching plans just got easier.
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <!--Text under Hero Title-->
-            <div class="col-lg-7">
-                <div class="lc-block">
-                    <div editable="rich">
-                        <p class="lead">
-                            Sharing and finding high-quality materials, build teacher communities all on one platform.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Hero Image-->
-        <div class="flex-shrink-0">
-            <img src="https://fakeimg.pl/400x400" 
-                alt="group of teachers" class="hero-img rounded" loading="lazy">
-        </div>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container justify-content-center gap-4 container-fluid mt-2">
+    <a class="navbar-brand" href="{{ url_for('pages.landing_page') }}"
+      >planUp</a
+    >
+    <!--Navbar items next to brand-->
+    <div class="collapse navbar-collapse flex-grow-0">
+      <ul class="navbar-nav">
+        <!--Browse Link-->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('pages.browse_page') }}">
+            Browse
+          </a>
+        </li>
+        <!--About Link-->
+        <li class="nav-item">
+          <a class="nav-link" href="#"> About </a>
+        </li>
+        <!--Buttons-->
+        <form class="container container-fluid justify-content-start">
+          <!--Sign In Button-->
+          <a href="{{ url_for('users.signin') }}">
+            <button class="btn btn-outline-success me-2" type="button">
+              Login
+            </button>
+          </a>
+          <!--Sign Up Button-->
+          <a href="{{ url_for('users.signup') }}">
+            <button class="btn btn-outline-success me-2" type="button">
+              Sign Up
+            </button>
+          </a>
+        </form>
+      </ul>
     </div>
-    <!--End of Hero-->
-    <!--Social Proof/Trusted By Section--> 
-    <div class="container container-fluid py-6">
-        <div class="row mb-5 text-xl-start">
-            <div class="col-md-12 mt-3">
-                <div class="lc-block">
-                    <div editable="rich" class="">
-                        <h2 class="h2">Trusted by</h2>
-                    </div>
-                </div>
-            </div>
+  </div>
+</nav>
+<!--End of Navbar-->
+<!--Hero Section-->
+<div class="container container-fluid d-flex mt-5">
+  <div class="flex-grow-1 ms-3">
+    <!--Hero Title-->
+    <div class="col-lg-6">
+      <div class="lc-block mb-3">
+        <div editable="rich">
+          <h2 class="fw-bold h2">
+            Leveling up your teaching plans just got easier.
+          </h2>
         </div>
-        <!--Icons-->
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-xl-6 text-xl-start d-flex g-4">
-            <!--First Icon-->
-            <div class="col py-3">
-                <div class="lc-block">
-                    <img class="img-fluid" 
-                        src="https://cdn.livecanvas.com/media/logos/world-logo/mailchimp.svg" 
-                        width="128" height="128" loading="lazy">
-                </div>
-            </div>
-            <!------------------->
-            <div class="col py-3">
-                <!--Second Icon-->
-                <div class="lc-block">
-                    <img class="img-fluid" 
-                        src="https://cdn.livecanvas.com/media/logos/world-logo/google.svg" 
-                        width="128" height="128" loading="lazy">
-                </div>
-            </div>
-            <!------------------->
-            <div class="col py-3">
-                <!--Third Icon-->
-                <div class="lc-block">
-                    <img class="img-fluid" 
-                        src="https://cdn.livecanvas.com/media/logos/world-logo/netflix.svg" 
-                        width="128" height="128" loading="lazy">
-                </div>
-            </div>
-            <!------------------->
-            <div class="col py-3">
-                <!--Four Icon-->
-                <div class="lc-block">
-                    <img class="img-fluid" 
-                        src="https://cdn.livecanvas.com/media/logos/world-logo/adobe.svg" 
-                        width="128" height="128" loading="lazy">
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <!--End of Social Proof-->
-    <!--Share and Find Section-->
-    <h2 class="h2 text-center mt-5">Share and Find Lessons</h2>
-    <div class="row text-center mt-3">
-        <div class="col-sm-6">
-        <!--First Card-->
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
-                    </p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+    <!--Text under Hero Title-->
+    <div class="col-lg-7">
+      <div class="lc-block">
+        <div editable="rich">
+          <p class="lead">
+            Sharing and finding high-quality materials, build teacher
+            communities all on one platform.
+          </p>
         </div>
-        <!--Second Card-->
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
-                    </p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <!--End of Share and Find-->
-    <!--Sign Up Section-->
-    <div class="container py-5 container-fluid">
-        <div class="row align-items-center">
-            <div class="col-md-12 text-center">
-                <!--Sign Up-->
-                <div class="lc-block mb-1 mt-4">
-                    <div editable="rich">
-                        <h2 class="h2">Sign Up for free today</h2>
-                        <p>
-                            It's easy to start searching and finding lesson plans<br>to accelerate your teaching. Our platform is designed for users.&nbsp;
-                        </p>
-                    </div>
-                </div>
-                <div class="lc-block border-top col-md-6 offset-md-3">
-                    <div editable="rich">
-                        <h2 class="fw-bolder"><br></h2>
-                    </div>
-                </div>
-                <!-- Sign Up Button-->
-                <div class="lc-block">
-                    <div editable="rich">
-                        <button type="submit" class="btn btn-outline-success me-2" href="#" role="button">
-                           Sign Up
-                        </button>
-                    </div>
-                </div>
-            </div>
+  </div>
+  <!--Hero Image-->
+  <div class="flex-shrink-0">
+    <img
+      src="https://fakeimg.pl/400x400"
+      alt="group of teachers"
+      class="hero-img rounded"
+      loading="lazy"
+    />
+  </div>
+</div>
+<!--End of Hero-->
+<!--Social Proof/Trusted By Section-->
+<div class="container container-fluid py-6">
+  <div class="row mb-5 text-xl-start">
+    <div class="col-md-12 mt-3">
+      <div class="lc-block">
+        <div editable="rich" class="">
+          <h2 class="h2">Trusted by</h2>
         </div>
-    </div> 
-    <!--End of Sign Up Section-->
-   <!--Footer-->
-   <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top text-center">
-       <div class="col mb-3">
-           <h5>planUp</h5>
-           <p class="text-muted">&copy;2024</p>
-       </div>
-       <!--Quick Links-->
-       <div class="col mb-3">
-           <h5>Quick Links</h5>
-           <ul class="nav flex-column">
-               <li class="nav-item mb-2">
-                   <a href="#" class="nav-link p-0 text-muted text-decoration-none">
-                       Home
-                   </a>
-               </li>
-               <!--Browse-->
-               <li class="nav-item mb-2">
-                   <a href="#" class="nav-link p-0 text-muted text-decoration-none">
-                       Browse
-                   </a>
-               </li>
-               <!--Our Story/About-->
-               <li class="nav-item mb-2">
-                   <a href="#" class="nav-link p-0 text-muted text-decoration-none">
-                       Sign Up
-                   </a>
-               </li>
-           </ul>
-       </div>
-       <!--Section 2-->
-       <div class="col mb-3">
-           <h5>Company</h5>
-           <ul class="nav flex-column">
-               <li class="nav-item mb-2">
-                   <a href="#" class="nav-link p-0 text-muted text-decoration-none">
-                       Careers
-                   </a>
-               </li>
-               <!--Browse-->
-               <li class="nav-item mb-2">
-                   <a href="#" class="nav-link p-0 text-muted text-decoration-none">
-                       Contact Us
-                   </a>
-               </li>
-               <!--Our Story/About-->
-               <li class="nav-item mb-2">
-                   <a href="#" class="nav-link p-0 text-muted text-decoration-none">
-                       Our Story
-                   </a>
-               </li>
-           </ul>
-       </div>
-       <!--Section 3-->
-       <div class="col mb-3">
-           <h5>Support</h5>
-           <ul class="nav flex-column">
-               <li class="nav-item mb-2">
-                   <a href="#" class="nav-link p-0 text-muted text-decoration-none">
-                       FAQ
-                   </a>
-               </li>
-               <!--Browse-->
-               <li class="nav-item mb-2">
-                   <a href="#" class="nav-link p-0 text-muted text-decoration-none">
-                       Resources Hub
-                   </a>
-               </li>
-               <!--Our Story/About-->
-               <li class="nav-item mb-2">
-                   <a href="#" class="nav-link p-0 text-muted text-decoration-none">
-                       Support Docs
-                   </a>
-               </li>
-           </ul>
-       </div>
-   </footer>
-   <!--End of Footer Section-->
+      </div>
+    </div>
+  </div>
+  <!--Icons-->
+  <div
+    class="row row-cols-2 row-cols-sm-3 row-cols-xl-6 text-xl-start d-flex g-4"
+  >
+    <!--First Icon-->
+    <div class="col py-3">
+      <div class="lc-block">
+        <img
+          class="img-fluid"
+          src="https://cdn.livecanvas.com/media/logos/world-logo/mailchimp.svg"
+          width="128"
+          height="128"
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <!------------------->
+    <div class="col py-3">
+      <!--Second Icon-->
+      <div class="lc-block">
+        <img
+          class="img-fluid"
+          src="https://cdn.livecanvas.com/media/logos/world-logo/google.svg"
+          width="128"
+          height="128"
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <!------------------->
+    <div class="col py-3">
+      <!--Third Icon-->
+      <div class="lc-block">
+        <img
+          class="img-fluid"
+          src="https://cdn.livecanvas.com/media/logos/world-logo/netflix.svg"
+          width="128"
+          height="128"
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <!------------------->
+    <div class="col py-3">
+      <!--Four Icon-->
+      <div class="lc-block">
+        <img
+          class="img-fluid"
+          src="https://cdn.livecanvas.com/media/logos/world-logo/adobe.svg"
+          width="128"
+          height="128"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+<!--End of Social Proof-->
+<!--Share and Find Section-->
+<h2 class="h2 text-center mt-5">Share and Find Lessons</h2>
+<div class="row text-center mt-3">
+  <div class="col-sm-6">
+    <!--First Card-->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">
+          With supporting text below as a natural lead-in to additional content.
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <!--Second Card-->
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">
+          With supporting text below as a natural lead-in to additional content.
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End of Share and Find-->
+<!--Sign Up Section-->
+<div class="container py-5 container-fluid">
+  <div class="row align-items-center">
+    <div class="col-md-12 text-center">
+      <!--Sign Up-->
+      <div class="lc-block mb-1 mt-4">
+        <div editable="rich">
+          <h2 class="h2">Sign Up for free today</h2>
+          <p>
+            It's easy to start searching and finding lesson plans<br />to
+            accelerate your teaching. Our platform is designed for users.&nbsp;
+          </p>
+        </div>
+      </div>
+      <div class="lc-block border-top col-md-6 offset-md-3">
+        <div editable="rich">
+          <h2 class="fw-bolder"><br /></h2>
+        </div>
+      </div>
+      <!-- Sign Up Button-->
+      <div class="lc-block">
+        <div editable="rich">
+          <button
+            type="submit"
+            class="btn btn-outline-success me-2"
+            href="#"
+            role="button"
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End of Sign Up Section-->
+<!--Footer-->
+<footer
+  class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top text-center"
+>
+  <div class="col mb-3">
+    <h5>planUp</h5>
+    <p class="text-muted">&copy;2024</p>
+  </div>
+  <!--Quick Links-->
+  <div class="col mb-3">
+    <h5>Quick Links</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2">
+        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+          Home
+        </a>
+      </li>
+      <!--Browse-->
+      <li class="nav-item mb-2">
+        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+          Browse
+        </a>
+      </li>
+      <!--Our Story/About-->
+      <li class="nav-item mb-2">
+        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+          Sign Up
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!--Section 2-->
+  <div class="col mb-3">
+    <h5>Company</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2">
+        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+          Careers
+        </a>
+      </li>
+      <!--Browse-->
+      <li class="nav-item mb-2">
+        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+          Contact Us
+        </a>
+      </li>
+      <!--Our Story/About-->
+      <li class="nav-item mb-2">
+        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+          Our Story
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!--Section 3-->
+  <div class="col mb-3">
+    <h5>Support</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2">
+        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+          FAQ
+        </a>
+      </li>
+      <!--Browse-->
+      <li class="nav-item mb-2">
+        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+          Resources Hub
+        </a>
+      </li>
+      <!--Our Story/About-->
+      <li class="nav-item mb-2">
+        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+          Support Docs
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+<!--End of Footer Section-->
 {% endblock %}

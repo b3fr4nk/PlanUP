@@ -14,7 +14,7 @@ class Post(db.Model):
     score = db.Column(db.Integer)
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'User'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False)
