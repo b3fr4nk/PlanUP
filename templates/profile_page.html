@@ -1,0 +1,397 @@
+{% extends 'base.html' %} 
+
+{% block title %} Profile Page-planUp {% endblock %}
+
+{% block content %}
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container justify-content-center gap-4 container-fluid mt-2">
+    <a class="navbar-brand" href="{{ url_for('pages.landing_page') }}">planUp</a>
+    <!--Navbar items next to brand-->
+    <div class="collapse navbar-collapse flex-grow-0">
+      <ul class="navbar-nav">
+        <!--Browse Link-->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('pages.browse_page') }}">
+            Browse
+          </a>
+        </li>
+        <!--Posts Link-->
+        <li class="nav-item">
+          <a class="nav-link" href="#"> Posts </a>
+        </li>
+        <!--Buttons-->
+        <form class="container container-fluid justify-content-start">
+          <!--Log Out Button-->
+          <a href="#">
+            <button class="btn btn-outline-success me-2" type="button">
+              Logout
+            </button>
+          </a>
+          <!--Profile Button-->
+          <a href="#">
+            <button class="btn btn-outline-success me-2" type="button">
+              Profile
+            </button>
+          </a>
+        </form>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--End of Navbar-->
+<!--Profile Section-->
+<section class="bg-light py-3 py-md-5 py-xl-8">
+  <div class="container container-fluid">
+    <div class="row gy-4 gy-lg-0">
+      <div class="col-12 col-lg-4 col-xl-3">
+        <div class="row gy-4">
+          <div class="col-12">
+            <div class="card widget-card border-light shadow-sm">
+              <div class="card-body">
+                <div class="text-center mb-3">
+                  <!--Profile Image-->
+                  <img src="./assets/img/profile-img-1.jpg" class="img-fluid rounded-circle" alt="Luna John">
+                </div>
+                <!--Profile Name-->
+                <h5 class="text-center mb-1">Ethan Leo</h5>
+                <!--User's Job-->
+                <p class="text-center text-secondary mb-4">History Teacher</p>
+                <ul class="list-group list-group-flush mb-4">
+                  <!--Followers-->
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h6 class="m-0">Followers</h6>
+                    <span>7,854</span>
+                  </li>
+                  <!--Following-->
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h6 class="m-0">Following</h6>
+                    <span>5,987</span>
+                  </li>
+                </ul>
+                <!--Follow Button-->
+                <div class="d-grid m-0">
+                  <button class="btn btn-outline-primary" type="button">Follow</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Social Media Section-->
+          <div class="col-12">
+            <div class="card widget-card border-light shadow-sm">
+              <div class="card-header text-bg-primary">Find Me On</div>
+              <div class="card-body">
+                <!--Social Media Icons-->
+                <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
+                  <i class="bi bi-youtube"></i>
+                </a>
+                <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+                <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
+                  <i class="bi bi-facebook"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-------------------->
+          <!--About Me Section-->
+          <div class="col-12">
+            <div class="card widget-card border-light shadow-sm">
+              <div class="card-header text-bg-primary">
+                About Me
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush mb-0">
+                  <li class="list-group-item">
+                    <h6 class="mb-1">
+                      <!--Education Section-->
+                      <span class="bii bi-mortarboard-fill me-2">
+                        Education
+                      </span>
+                    </h6>
+                    <span>M.S History</span>
+                  </li>
+                  <!--Location-->
+                  <li class="list-group-item">
+                    <h6 class="mb-1">
+                      <span class="bii bi-geo-alt-fill me-2">
+                        Location
+                      </span>
+                    </h6>
+                    <span>Mountain View, California</span>
+                  </li>
+                  <!--Company-->
+                  <li class="list-group-item">
+                    <h6 class="mb-1">
+                      <span class="bii bi-building-fill-gear me-2">
+                        Subject
+                      </span>
+                    </h6>
+                    <span>Middle School History</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--------------------------------->
+      <!--Tabs Section-->
+      <div class="col-12 col-lg-8 col-xl-9">
+        <div class="card widget-card border-light shadow-sm">
+          <div class="card-body p-4">
+            <ul class="nav nav-tabs" id="profileTab" role="tablist">
+              <!--Overview Tab-->
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview-tab-pane" type="button" role="tab" aria-controls="overview-tab-pane" aria-selected="true">
+                  Overview
+                </button>
+              </li>
+              <!--Profile Tab-->
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+                  Profile
+                </button>
+              </li>
+              <!--Email Tab-->
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="email-tab" data-bs-toggle="tab" data-bs-target="#email-tab-pane" type="button" role="tab" aria-controls="email-tab-pane" aria-selected="false">
+                  Emails
+                </button>
+              </li>
+              <!--Password Tab-->
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-tab-pane" type="button" role="tab" aria-controls="password-tab-pane" aria-selected="false">
+                  Password
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content pt-4" id="profileTabContent">
+              <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
+                <h5 class="mb-3">About</h5>
+                <p class="lead mb-3">
+                  A history professor who knows a lot of history. Currently teaching history to middle school students.
+                </p>
+                <!--Profile Information-->
+                <h5 class="mb-3">Profile</h5>
+                <div class="row g-0">
+                  <!-- First Name -->
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">First Name</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">Ethan</div>
+                  </div>
+                  <!-- Last Name -->
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Last Name</div>
+                  </div>
+                  <!-- Location -->
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">Leo</div>
+                  </div>
+                  <!-- Education -->
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Education</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">M.S History</div>
+                  </div>
+                  <!-- Location -->
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Location</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">United States</div>
+                  </div>
+                  <!--Grade Level-->
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Grade Level</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">Middle School</div>
+                  </div>
+                </div>
+              </div>
+              <!------------------->
+              <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                <form action="#!" class="row gy-3 gy-xxl-4">
+                  <div class="col-12">
+                    <div class="row gy-2">
+                      <!--Profile Image-->
+                      <label class="col-12 form-label m-0">Profile Image</label>
+                      <div class="col-12">
+                        <img src="./assets/img/profile-img-1.jpg" class="img-fluid" alt="Luna John">
+                      </div>
+                      <div class="col-12">
+                        <a href="#!" class="d-inline-block bg-primary link-light lh-1 p-2 rounded">
+                          <i class="bi bi-upload"></i>
+                        </a>
+                        <a href="#!" class="d-inline-block bg-danger link-light lh-1 p-2 rounded">
+                          <i class="bi bi-trash"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <!--First Name-->
+                  <div class="col-12 col-md-6">
+                    <label for="inputFirstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="inputFirstName" value="Ethan">
+                  </div>
+                  <!--Last Name-->
+                  <div class="col-12 col-md-6">
+                    <label for="inputLastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="inputLastName" value="Leo">
+                  </div>
+                  <!--Education-->
+                  <div class="col-12 col-md-6">
+                    <label for="inputEducation" class="form-label">Education</label>
+                    <input type="text" class="form-control" id="inputEducation" value="M.S History">
+                  </div> 
+                  <!--Job-->
+                  <div class="col-12 col-md-6">
+                    <label for="inputJob" class="form-label">Job</label>
+                    <input type="text" class="form-control" id="inputJob" value="Teacher">
+                  </div>
+                  <!--Youtube-->
+                  <div class="col-12 col-md-6">
+                    <label for="inputYouTube" class="form-label">YouTube</label>
+                    <input type="text" class="form-control" id="inputYouTube" value="https://www.youtube.com/EthanLeo">
+                  </div>
+                  <!--Twitter/X-->
+                  <div class="col-12 col-md-6">
+                    <label for="inputX" class="form-label">X</label>
+                    <input type="text" class="form-control" id="inputX" value="https://twitter.com/EthanLeo">
+                  </div>
+                  <!--Facebook-->
+                  <div class="col-12 col-md-6">
+                    <label for="inputFacebook" class="form-label">Facebook</label>
+                    <input type="text" class="form-control" id="inputFacebook" value="https://www.facebook.com/EthanLeo">
+                  </div>
+                  <!--About-->
+                  <div class="col-12">
+                    <label for="inputAbout" class="form-label">About</label>
+                    <textarea class="form-control" id="inputAbout">
+                      A history professor who knows a lot of history. Currently teaching history to middle school students.
+                    </textarea>
+                  </div>
+                  <!--Save Button-->
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                  </div>
+                </form>
+              </div>
+              <!------------------------>
+              <!--Change Password-->
+              <div class="tab-pane fade" id="password-tab-pane" role="tabpanel" aria-labelledby="password-tab" tabindex="0">
+                <form action="#!">
+                  <div class="row gy-3 gy-xxl-4">
+                    <!--Current Password-->
+                    <div class="col-12">
+                      <label for="currentPassword" class="form-label">Current Password</label>
+                      <input type="password" class="form-control" id="currentPassword">
+                    </div>
+                    <!--New Password-->
+                    <div class="col-12">
+                      <label for="newPassword" class="form-label">New Password</label>
+                      <input type="password" class="form-control" id="newPassword">
+                    </div>
+                    <!--Confirm Password-->
+                    <div class="col-12">
+                      <label for="confirmPassword" class="form-label">Confirm Password</label>
+                      <input type="password" class="form-control" id="confirmPassword">
+                    </div>
+                    <!--Change Password-->
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Change Password</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--End of Profile Section-->
+<!--Footer-->
+<footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top text-center">
+    <div class="col mb-3">
+      <h5>planUp</h5>
+      <p class="text-muted">&copy;2024</p>
+    </div>
+    <!--Quick Links-->
+    <div class="col mb-3">
+      <h5>Quick Links</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+            Home
+          </a>
+        </li>
+        <!--Browse-->
+        <li class="nav-item mb-2">
+          <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+            Browse
+          </a>
+        </li>
+        <!--Our Story/About-->
+        <li class="nav-item mb-2">
+          <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+            Sign Up
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!--Section 2-->
+    <div class="col mb-3">
+      <h5>Company</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+            Careers
+          </a>
+        </li>
+        <!--Browse-->
+        <li class="nav-item mb-2">
+          <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+            Contact Us
+          </a>
+        </li>
+        <!--Our Story/About-->
+        <li class="nav-item mb-2">
+          <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+            Our Story
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!--Section 3-->
+    <div class="col mb-3">
+      <h5>Support</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+            FAQ
+          </a>
+        </li>
+        <!--Browse-->
+        <li class="nav-item mb-2">
+          <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+            Resources Hub
+          </a>
+        </li>
+        <!--Our Story/About-->
+        <li class="nav-item mb-2">
+          <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+            Support Docs
+          </a>
+        </li>
+      </ul>
+    </div>
+</footer>
+<!--End of Footer Section-->
+{% endblock %}
