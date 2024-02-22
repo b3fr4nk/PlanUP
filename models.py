@@ -8,7 +8,7 @@ class Post(db.Model):
     title = db.Column(db.Text)
     description = db.Column(db.Text)
     # Set nullable to false once authentication is implemented
-    owner_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=True)
+    owner_id = db.Column(db.Integer, db.ForeignKey('User.id'))
     owner = db.relationship('User')
     media = db.Column(db.Text)
     score = db.Column(db.Integer)

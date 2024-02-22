@@ -1,4 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
+from flask_login import login_user, logout_user, login_required, current_user
 from datetime import date, datetime
 from models import Post
 from forms import PostForm
@@ -10,6 +11,7 @@ posts = Blueprint("posts", __name__)
 
 
 @posts.route('/posts/new', methods=['GET', 'POST'])
+@login_required
 def new_post():
     form = PostForm()
 
@@ -25,8 +27,8 @@ def new_post():
             title=form.title.data,
             description=form.description.data,
             media=f'uploads/{filename}',
-            score=0
-            # TODO add comments and owner when they are implemented
+            score=0,
+            owner_id=current_user.id
         )
 
         db.session.add(new_post)
@@ -41,7 +43,6 @@ def new_post():
 @posts.route('/posts', methods=['GET'])
 def all_posts():
     all_posts = Post.query.all()
-    print(all_posts)
     return render_template('browse.html', all_posts=all_posts)
 
 
@@ -68,8 +69,15 @@ def get_post(post_id):
 
 
 @posts.route('/posts/delete/<post_id>', methods=['GET'])
+@login_required
 def delete_post(post_id):
-    post = Post.query.filter_by(id=post_id).delete()
-    db.session.commit()
+
+    post = Post.query.get(post_id)
+
+    if post.owner_id == current_user.id:
+        db.session.delete(post_id)
+        db.session.commit()
+    else:
+        flash('you are not authorized to delete this')
 
     return redirect(url_for('posts.all_posts'))
