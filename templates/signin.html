@@ -17,9 +17,9 @@
             Browse
           </a>
         </li>
-        <!--About Link-->
+        <!--Posts Link-->
         <li class="nav-item">
-          <a class="nav-link" href="#"> About </a>
+          <a class="nav-link" href="{{ url_for('posts.all_posts') }}"> New Posts </a>
         </li>
         <!--Buttons-->
         <form class="container container-fluid justify-content-start">
@@ -45,9 +45,9 @@
 <div class="container container-fluid">
   <h2 class="h2 text-center mt-4 mb-4">Sign In</h2>
   <form method="post" action="{{ url_for('users.signin')}}" class="form-group">
+    {{ form.csrf_token }}
     <div class="mb-3 row text-center">
       <div class="col-sm-10">
-        {{ form.csrf_token }}
 
         <label class="col-form-label">{{ form.username.label }}:</label>
         {{ form.username }}
@@ -82,13 +82,13 @@
       </li>
       <!--Browse-->
       <li class="nav-item mb-2">
-        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+        <a  href="{{ url_for('pages.browse_page') }}" class="nav-link p-0 text-muted text-decoration-none">
           Browse
         </a>
       </li>
-      <!--Our Story/About-->
+      <!--Sign Up-->
       <li class="nav-item mb-2">
-        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+        <a href="{{ url_for('users.signup') }}" class="nav-link p-0 text-muted text-decoration-none">
           Sign Up
         </a>
       </li>
@@ -126,13 +126,13 @@
           FAQ
         </a>
       </li>
-      <!--Browse-->
+      <!--Resources-->
       <li class="nav-item mb-2">
         <a href="#" class="nav-link p-0 text-muted text-decoration-none">
           Resources Hub
         </a>
       </li>
-      <!--Our Story/About-->
+      <!--Support Docs-->
       <li class="nav-item mb-2">
         <a href="#" class="nav-link p-0 text-muted text-decoration-none">
           Support Docs

@@ -1,5 +1,7 @@
-{% extends 'base.html' %} {% block title %} Browse Lesson Plans-planUp {%
-endblock %} {% block content %}
+{% extends 'base.html' %} 
+{% block title %} Browse Lesson Plans-planUp {% endblock %} 
+
+{% block content %}
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container justify-content-center gap-4 container-fluid mt-2">
@@ -15,9 +17,11 @@ endblock %} {% block content %}
             Browse
           </a>
         </li>
-        <!--About Link-->
+        <!--Posts Link-->
         <li class="nav-item">
-          <a class="nav-link" href="#"> About </a>
+          <a class="nav-link" href="{{ url_for('posts.all_posts') }}"> 
+            New Posts 
+          </a>
         </li>
         <!--Buttons-->
         <form class="container container-fluid justify-content-start">
@@ -40,52 +44,29 @@ endblock %} {% block content %}
 </nav>
 <!--End of Navbar-->
 <!--Card Section-->
-<div class="container container-fluid mt-4">
-  <div class="card" style="width: 18rem">
-    <img src="https://fakeimg.pl/200x200" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
-    </div>
-    <!--Buttons-->
-    <div class="card-body">
-      <a href="#" class="card-link">Share</a>
-      <a href="#" class="card-link">Download</a>
-    </div>
-  </div>
-  <div class="card mt-2" style="width: 18rem">
-    <img src="https://fakeimg.pl/200x200" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
-    </div>
-    <!--Buttons-->
-    <div class="card-body">
-      <a href="#" class="card-link">Share</a>
-      <a href="#" class="card-link">Download</a>
-    </div>
+<div class="container container-fluid embed-responsive embed-responsive-16by9 mt-3">
+    <div class="row align-items-center">
+      {% for post in all_posts %}
+          <div class="col-sm-3">
+            <div class="card mb-4">
+                <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" class="card-img-top" controls></video>
+                <div class="card-block card-body">
+                    <!-- Card Title -->
+                    <h4 class="card-title">{{post.title}}</h4>
+                    <!-- Card Text -->
+                    <p class="card-text">{{post.description}}</p>
+                    <!-- Card Button -->
+                    <a href="{{url_for('posts.get_post', post_id=post.id)}}" class="btn btn-primary">Comments</a>
+                </div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
   </div>
 </div>
 <!--End of Card Section-->
-<!--
-    Removed since there is no data yet
-    {% for post in all_posts %}
-        <h5 class="card-title">
-            <a href="{{url_for('posts.get_post', post_id=post.id)}}">{{post.title}}</a>
-        </h5>
-        <p class="card-text">{{post.description}}</p>
-    {% endfor %} 
-    -->
 <!--Footer-->
-<footer
-  class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top text-center"
->
+<footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top text-center">
   <div class="col mb-3">
     <h5>planUp</h5>
     <p class="text-muted">&copy;2024</p>
@@ -101,13 +82,13 @@ endblock %} {% block content %}
       </li>
       <!--Browse-->
       <li class="nav-item mb-2">
-        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+        <a  href="{{ url_for('pages.browse_page') }}" class="nav-link p-0 text-muted text-decoration-none">
           Browse
         </a>
       </li>
-      <!--Our Story/About-->
+      <!--Sign Up-->
       <li class="nav-item mb-2">
-        <a href="#" class="nav-link p-0 text-muted text-decoration-none">
+        <a href="{{ url_for('users.signup') }}" class="nav-link p-0 text-muted text-decoration-none">
           Sign Up
         </a>
       </li>
@@ -145,13 +126,13 @@ endblock %} {% block content %}
           FAQ
         </a>
       </li>
-      <!--Browse-->
+      <!--Resources-->
       <li class="nav-item mb-2">
         <a href="#" class="nav-link p-0 text-muted text-decoration-none">
           Resources Hub
         </a>
       </li>
-      <!--Our Story/About-->
+      <!--Support-->
       <li class="nav-item mb-2">
         <a href="#" class="nav-link p-0 text-muted text-decoration-none">
           Support Docs
