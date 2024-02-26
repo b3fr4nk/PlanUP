@@ -15,9 +15,9 @@ block content %}
             Browse
           </a>
         </li>
-        <!--About Link-->
+        <!--Posts Link-->
         <li class="nav-item">
-          <a class="nav-link" href="#"> About </a>
+          <a class="nav-link" href="{{ url_for('posts.all_posts') }}">New Posts </a>
         </li>
         <!--Buttons-->
         <form class="container container-fluid justify-content-start">
@@ -28,7 +28,7 @@ block content %}
             </button>
           </a>
           <!--Sign Up Button-->
-          <a href="{{ url_for('pages.signup') }}">
+          <a href="{{ url_for('users.signup') }}">
             <button class="btn btn-outline-success me-2" type="button">
               Sign Up
             </button>
