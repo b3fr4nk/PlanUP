@@ -1,8 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from flask_login import login_required, current_user
-from models import Post
-from models import Comment
-from forms import PostForm
+from models import Post, Comment, User
+from forms import PostForm, CommentForm
 from werkzeug.utils import secure_filename
 
 from extensions import app, db
@@ -49,8 +48,10 @@ def all_posts():
 @posts.route('/posts/<post_id>', methods=['GET', 'POST'])
 def get_post(post_id):
     post = Post.query.get(post_id)
-    form = PostForm(obj=post)
-    comments = Comment.query.filter_by(attached_to_id=post_id)
+    form = CommentForm()
+    comments = db.session.query(User, Post, Comment).filter(
+        User.id == Comment.created_by).filter(Post.id == Comment.attached_to_id).all()
+    print(comments[0].User.username)
 
     if form.validate_on_submit():
         post.title = form.title.data

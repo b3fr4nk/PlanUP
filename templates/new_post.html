@@ -17,18 +17,20 @@ block content %}
         </li>
         <!--Posts Link-->
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('posts.all_posts') }}">New Posts </a>
+          <a class="nav-link" href="{{ url_for('posts.all_posts') }}"
+            >New Posts
+          </a>
         </li>
         <!--Buttons-->
         <form class="container container-fluid justify-content-start">
           <!--Sign In Button-->
-          <a href="{{ url_for('users.signin') }}">
+          <a href="{{ url_for('auth.login') }}">
             <button class="btn btn-outline-success me-2" type="button">
               Login
             </button>
           </a>
           <!--Sign Up Button-->
-          <a href="{{ url_for('users.signup') }}">
+          <a href="{{ url_for('auth.signup') }}">
             <button class="btn btn-outline-success me-2" type="button">
               Sign Up
             </button>

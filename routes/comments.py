@@ -10,7 +10,7 @@ from extensions import app, db
 comments = Blueprint("comments", __name__)
 
 
-@comments.route('posts/<post_id>/comments/new', methods=['POST'])
+@comments.route('/posts/<post_id>/comments/new', methods=['POST'])
 @login_required
 def new_comment(post_id):
     """route to create a new comment on a post"""
@@ -19,7 +19,6 @@ def new_comment(post_id):
     if form.validate_on_submit():
         new_comment = Comment(
             text=form.comment.data,
-            score=0,
             created_by=current_user.id,
             attached_to_id=post_id
         )
