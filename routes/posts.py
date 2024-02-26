@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
-from flask_login import login_user, logout_user, login_required, current_user
-from datetime import date, datetime
+from flask_login import login_required, current_user
 from models import Post
+from models import Comment
 from forms import PostForm
 from werkzeug.utils import secure_filename
 
@@ -50,6 +50,7 @@ def all_posts():
 def get_post(post_id):
     post = Post.query.get(post_id)
     form = PostForm(obj=post)
+    comments = Comment.query.filter_by(attached_to_id=post_id)
 
     if form.validate_on_submit():
         post.title = form.title.data
@@ -65,7 +66,7 @@ def get_post(post_id):
 
     db.session.commit()
 
-    return render_template('post.html', post=post, form=form)
+    return render_template('post.html', post=post, form=form, comments=comments)
 
 
 @posts.route('/posts/delete/<post_id>', methods=['GET'])
