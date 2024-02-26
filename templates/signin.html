@@ -19,7 +19,7 @@
         </li>
         <!--Posts Link-->
         <li class="nav-item">
-          <a class="nav-link" href="#"> Posts </a>
+          <a class="nav-link" href="{{ url_for('posts.all_posts') }}"> Posts </a>
         </li>
         <!--Buttons-->
         <form class="container container-fluid justify-content-start">
@@ -45,9 +45,9 @@
 <div class="container container-fluid">
   <h2 class="h2 text-center mt-4 mb-4">Sign In</h2>
   <form method="post" action="{{ url_for('users.signin')}}" class="form-group">
+    {{ form.csrf_token }}
     <div class="mb-3 row text-center">
       <div class="col-sm-10">
-        {{ form.csrf_token }}
 
         <label class="col-form-label">{{ form.username.label }}:</label>
         {{ form.username }}

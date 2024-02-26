@@ -19,7 +19,7 @@
         </li>
         <!--Posts Link-->
         <li class="nav-item">
-          <a class="nav-link" href="#"> 
+          <a class="nav-link" href="{{ url_for('posts.all_posts') }}"> 
             Posts 
           </a>
         </li>
@@ -56,7 +56,7 @@
                     <!-- Card Text -->
                     <p class="card-text">{{post.description}}</p>
                     <!-- Card Button -->
-                    <a href="{{url_for('posts.get_post', post_id=post.id)}}" class="btn btn-primary">GS</a>
+                    <a href="{{url_for('posts.get_post', post_id=post.id)}}" class="btn btn-primary">Comments</a>
                 </div>
             </div>
           </div>
@@ -65,15 +65,6 @@
   </div>
 </div>
 <!--End of Card Section-->
-<!--
-    Removed since there is no data yet
-    {% for post in all_posts %}
-        <h5 class="card-title">
-            <a href="{{url_for('posts.get_post', post_id=post.id)}}">{{post.title}}</a>
-        </h5>
-        <p class="card-text">{{post.description}}</p>
-    {% endfor %} 
-    -->
 <!--Footer-->
 <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top text-center">
   <div class="col mb-3">
