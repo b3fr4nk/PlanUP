@@ -45,7 +45,6 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             login_user(user, remember=True)
-            print(user.id)
             return redirect(url_for('posts.all_posts'))
 
     return render_template('signin.html', form=form)
@@ -69,12 +68,10 @@ def get_user(user_id):
 @login_required
 def delete_user(user_id):
     user = User.query.get(user_id)
-    print(current_user.id)
 
     if user.id == current_user.id:
         logout_user()
         db.session.delete(user)
         db.session.commit()
-        print('deleted')
 
     return redirect(url_for('posts.all_posts'))

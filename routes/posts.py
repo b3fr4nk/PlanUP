@@ -15,7 +15,6 @@ def new_post():
     form = PostForm()
 
     if form.validate_on_submit():
-        print('valid')
         try:
             filename = secure_filename(form.media.data.filename)
             form.file.data.save('uploads/' + filename)
@@ -51,7 +50,6 @@ def get_post(post_id):
     form = CommentForm()
     comments = db.session.query(User, Post, Comment).filter(
         User.id == Comment.created_by).filter(Post.id == Comment.attached_to_id).all()
-    print(comments[0].User.username)
 
     if form.validate_on_submit():
         post.title = form.title.data
