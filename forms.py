@@ -41,6 +41,11 @@ class PostForm(FlaskForm):
     description = StringField('Description', validators=[DataRequired()])
     media = FileField('Media')
 
+class CommentForm(FlaskForm):
+    """Form for creating new Comments"""
+
+    comment = StringField('Comment', validators=[DataRequired()])
+
 
 class SignupForm(FlaskForm):
     """Form for creating a new user"""

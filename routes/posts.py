@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
-from datetime import date, datetime
-from models import Post
-from forms import PostForm
+from flask_login import login_required, current_user
+from models import Post, Comment, User
+from forms import PostForm, CommentForm
 from werkzeug.utils import secure_filename
 
 from extensions import app, db
@@ -10,6 +10,7 @@ posts = Blueprint("posts", __name__)
 
 
 @posts.route('/posts/new', methods=['GET', 'POST'])
+@login_required
 def new_post():
     form = PostForm()
 
@@ -25,8 +26,8 @@ def new_post():
             title=form.title.data,
             description=form.description.data,
             media=f'uploads/{filename}',
-            score=0
-            # TODO add comments and owner when they are implemented
+            score=0,
+            owner_id=current_user.id
         )
 
         db.session.add(new_post)
@@ -41,14 +42,16 @@ def new_post():
 @posts.route('/posts', methods=['GET'])
 def all_posts():
     all_posts = Post.query.all()
-    print(all_posts)
     return render_template('browse.html', all_posts=all_posts)
 
 
 @posts.route('/posts/<post_id>', methods=['GET', 'POST'])
 def get_post(post_id):
     post = Post.query.get(post_id)
-    form = PostForm(obj=post)
+    form = CommentForm()
+    comments = db.session.query(User, Post, Comment).filter(
+        User.id == Comment.created_by).filter(Post.id == Comment.attached_to_id).all()
+    print(comments[0].User.username)
 
     if form.validate_on_submit():
         post.title = form.title.data
@@ -64,12 +67,19 @@ def get_post(post_id):
 
     db.session.commit()
 
-    return render_template('post.html', post=post, form=form)
+    return render_template('post.html', post=post, form=form, comments=comments)
 
 
 @posts.route('/posts/delete/<post_id>', methods=['GET'])
+@login_required
 def delete_post(post_id):
-    post = Post.query.filter_by(id=post_id).delete()
-    db.session.commit()
+
+    post = Post.query.get(post_id)
+
+    if post.owner_id == current_user.id:
+        db.session.delete(post_id)
+        db.session.commit()
+    else:
+        flash('you are not authorized to delete this')
 
     return redirect(url_for('posts.all_posts'))

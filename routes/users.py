@@ -9,7 +9,7 @@ users = Blueprint('users', __name__)
 auth = Blueprint('auth', __name__)
 
 
-@users.route('/signup', methods=['GET', 'POST'])
+@auth.route('/signup', methods=['GET', 'POST'])
 def signup():
     """
     GET: Returns sign up page
@@ -33,8 +33,8 @@ def signup():
     return render_template('signup.html', form=form)
 
 
-@users.route('/signin', methods=['GET', ])
-def signin():
+@auth.route('/login', methods=['GET', 'POST'])
+def login():
     """
     GET: Returns sign in page
     Redirect to profile
@@ -45,9 +45,17 @@ def signin():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             login_user(user, remember=True)
+            print(user.id)
             return redirect(url_for('posts.all_posts'))
-            
+
     return render_template('signin.html', form=form)
+
+
+@auth.route('/logout', methods=['GET'])
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('posts.all_posts'))
 
 
 @users.route('/users/<user_id>', methods=['GET'])
@@ -58,9 +66,15 @@ def get_user(user_id):
 
 
 @users.route('/users/delete/<user_id>', methods=['GET'])
+@login_required
 def delete_user(user_id):
-    user = User.query.delete(user_id)
+    user = User.query.get(user_id)
+    print(current_user.id)
 
-    db.session.commit()
+    if user.id == current_user.id:
+        logout_user()
+        db.session.delete(user)
+        db.session.commit()
+        print('deleted')
 
     return redirect(url_for('posts.all_posts'))
