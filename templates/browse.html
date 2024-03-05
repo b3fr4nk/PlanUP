@@ -26,13 +26,13 @@
         <!--Buttons-->
         <form class="container container-fluid justify-content-start">
           <!--Sign In Button-->
-          <a href="{{ url_for('users.signin') }}">
+          <a href="{{ url_for('auth.login') }}">
             <button class="btn btn-outline-success me-2" type="button">
               Login
             </button>
           </a>
           <!--Sign Up Button-->
-          <a href="{{ url_for('users.signup') }}">
+          <a href="{{ url_for('auth.signup') }}">
             <button class="btn btn-outline-success me-2" type="button">
               Sign Up
             </button>
@@ -88,7 +88,7 @@
       </li>
       <!--Sign Up-->
       <li class="nav-item mb-2">
-        <a href="{{ url_for('users.signup') }}" class="nav-link p-0 text-muted text-decoration-none">
+        <a href="{{ url_for('auth.signup') }}" class="nav-link p-0 text-muted text-decoration-none">
           Sign Up
         </a>
       </li>

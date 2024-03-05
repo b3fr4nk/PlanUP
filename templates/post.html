@@ -1,9 +1,5 @@
-{% extends 'base.html' %} 
-
-{% block title %} {{post.title}}-planUp {% endblock %}
-{{post.title}} {{post.description}} 
-
-{% block content %}
+{% extends 'base.html' %} {% block title %} {{post.title}}-planUp {% endblock %}
+{{post.title}} {{post.description}} {% block content %}
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container justify-content-center gap-4 container-fluid mt-2">
@@ -21,12 +17,14 @@
         </li>
         <!--Posts Link-->
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('posts.all_posts') }}"> New Posts </a>
+          <a class="nav-link" href="{{ url_for('posts.all_posts') }}">
+            New Posts
+          </a>
         </li>
         <!--Buttons-->
         <form class="container container-fluid justify-content-start">
           <!--Sign In Button-->
-          <a href="{{ url_for('users.signin') }}">
+          <a href="{{ url_for('auth.login') }}">
             <button class="btn btn-outline-success me-2" type="button">
               Login
             </button>
@@ -46,134 +44,65 @@
 <!--Comment Section-->
 <div class="container container-fluid mt-5 mb-5">
   <div class="row height d-flex justify-content-center align-items-center">
-      <div class="col-md-7">
-          <div class="card">
-              <div class="p-3">
-                  <h6>Comments</h6>
-              </div>
-              <div class="mt-3 d-flex flex-row align-items-center p-3 form-color"> 
-                <img src="https://fakeimg.pl/50x50" width="50" class="rounded-circle mr-3"> 
-                <input type="text" class="form-control" placeholder="Enter your comment..."> 
-              </div>
-              <div class="mt-2">
-                  <div class="d-flex flex-row p-3"> 
-                      <!--Profile Picture-->
-                      <img src="https://fakeimg.pl/40x40" width="40" height="40" class="rounded-circle mr-3">
-                      <div class="w-100">
-                          <div class="d-flex justify-content-between align-items-center">
-                              <div class="d-flex flex-row align-items-center"> 
-                                <!--Profile Name-->
-                                <span class="mr-2">Rohan</span> 
-                              </div> 
-                              <!--Time Created-->
-                              <small>12h ago</small>
-                          </div>
-                          <!--Comment-->
-                          <p class="text-justify comment-text mb-0">
-                            We have 3 workitems (applications) that are not being picked up correctly. Appears to be a missing school type.
-                          </p>
-                          <!--Delete-->
-                          <div class="d-flex flex-row user-feed"> 
-                            <span class="ml-3">
-                              <i class="fa fa-comments-o mr-2"></i>Delete
-                            </span> 
-                          </div>
-                      </div>
-                  </div>
-                  <!--Comment 2-->
-                  <div class="d-flex flex-row p-3"> 
-                      <!--Profile Picture-->
-                      <img src="https://fakeimg.pl/40x40" width="40" height="40" class="rounded-circle mr-3">
-                      <div class="w-100">
-                          <div class="d-flex justify-content-between align-items-center">
-                              <div class="d-flex flex-row align-items-center"> 
-                                <!--Profile Name-->
-                                <span class="mr-2">Julius</span> 
-                              </div> 
-                              <!--Time Created-->
-                              <small>8h ago</small>
+    <div class="col-md-7">
+      <div class="card">
+        <div class="p-3">
+          <h6>Comments</h6>
+        </div>
+        <form
+          class="form-group"
+          action="{{url_for('comments.new_comment', post_id=post.id)}}"
+          method="POST"
+        >
+          {{form.csrf_token}} {{form.comment.label}} {{form.comment}}
 
+          <ul>
+            {% for error in form.comment.errors %}
+            <li class="text-decoration-none error">{{ error }}</li>
+            {% endfor %}
+          </ul>
 
-
-                          </div>
-                          <!--Comment-->
-                          <p class="text-justify comment-text mb-0">
-                            Can we check why the application is not showing the school type correctly? PMT has raised concerns on some applications being unusable due to this issue.
-                          </p>
-                          <!--Delete-->
-                          <div class="d-flex flex-row user-feed"> 
-                            <span class="ml-3">
-                              <i class="fa fa-comments-o mr-2"></i>Delete
-                            </span> 
-                          </div>
-                      </div>
-                  </div>
-                  <!--Comment 3-->
-                  <div class="d-flex flex-row p-3"> 
-                      <!--Profile Picture-->
-                      <img src="https://fakeimg.pl/40x40" width="40" height="40" class="rounded-circle mr-3">
-                      <div class="w-100">
-                          <div class="d-flex justify-content-between align-items-center">
-                              <div class="d-flex flex-row align-items-center"> 
-                                <!--Profile Name-->
-                                <span class="mr-2">Teck Yuan</span>
-                              </div> 
-                              <!--Time Created-->
-                              <small>1h ago</small>
-                          </div>
-                          <!--Comment-->
-                          <p class="text-justify comment-text mb-0"> 
-                            The payload from CIRIS doesn't contain the correct key value. So better to raise ticket with them?
-                          </p>
-                          <!--Delete-->
-                          <div class="d-flex flex-row user-feed"> 
-                            <span class="ml-3">
-                              <i class="fa fa-comments-o mr-2"></i>Delete
-                            </span> 
-                          </div>
-                      </div>
-                  </div>
+          <input type="submit" value="Submit" />
+        </form>
+        <div class="mt-2">
+          {% for comment in comments %}
+          <div class="d-flex flex-row p-3">
+            <!--Profile Picture-->
+            <img
+              src="https://fakeimg.pl/40x40"
+              width="40"
+              height="40"
+              class="rounded-circle mr-3"
+            />
+            <div class="w-100">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex flex-row align-items-center">
+                  <!--Profile Name-->
+                  <span class="mr-2">{{comment.User.username}}</span>
+                </div>
+                <!--Time Created-->
+                <small>12h ago</small>
               </div>
+              <!--Comment-->
+              <p class="text-justify comment-text mb-0">
+                {{comment.Comment.text}}
+              </p>
+            </div>
           </div>
+          {%endfor%}
+        </div>
       </div>
+    </div>
   </div>
 </div>
 <!--End of Comment Section-->
 <!--Start of Post form-->
-<form
-  class="form-group"
-  action="{{url_for('posts.get_post', post_id=post.id)}}"
-  method="POST"
->
-  {{form.csrf_token}} {{form.title.label}} {{form.title}}
 
-  <ul>
-    {% for error in form.title.errors %}
-    <li class="text-decoration-none error">{{ error }}</li>
-    {% endfor %}
-  </ul>
-
-  {{form.description.label}} {{form.description}}
-
-  <ul>
-    {% for error in form.description.errors %}
-    <li class="text-decoration-none error">{{ error }}</li>
-    {% endfor %}
-  </ul>
-
-  {{form.media.label}} {{form.media}}
-
-  <ul>
-    {% for error in form.media.errors %}
-    <li class="text-decoration-none error">{{ error }}</li>
-    {% endfor %}
-  </ul>
-
-  <input type="submit" value="Submit" />
-</form>
 <!--End of Post Form-->
 <!--Footer-->
-<footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top text-center">
+<footer
+  class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top text-center"
+>
   <div class="col mb-3">
     <h5>planUp</h5>
     <p class="text-muted">&copy;2024</p>
@@ -189,13 +118,19 @@
       </li>
       <!--Browse-->
       <li class="nav-item mb-2">
-        <a  href="{{ url_for('pages.browse_page') }}" class="nav-link p-0 text-muted text-decoration-none">
+        <a
+          href="{{ url_for('pages.browse_page') }}"
+          class="nav-link p-0 text-muted text-decoration-none"
+        >
           Browse
         </a>
       </li>
       <!--Sign Up-->
       <li class="nav-item mb-2">
-        <a href="{{ url_for('users.signup') }}" class="nav-link p-0 text-muted text-decoration-none">
+        <a
+          href="{{ url_for('auth.signup') }}"
+          class="nav-link p-0 text-muted text-decoration-none"
+        >
           Sign Up
         </a>
       </li>
