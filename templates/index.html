@@ -20,7 +20,7 @@
         </li>
         <!--Posts Link-->
         <li class="nav-item">
-          <a class="nav-link" href="#"> Posts </a>
+          <a class="nav-link" href="{{ url_for('posts.all_posts') }}"> Posts </a>
         </li>
         <!--Buttons-->
         <form class="container container-fluid justify-content-start">
@@ -70,7 +70,7 @@
   <!--Hero Image-->
   <div class="flex-shrink-0">
     <img
-      src="https://fakeimg.pl/400x400"
+      src="./../static/hero-img.png"
       alt="group of teachers"
       class="hero-img rounded"
       loading="lazy"
@@ -83,7 +83,7 @@
   <div class="row mb-5 text-xl-start">
     <div class="col-md-12 mt-3">
       <div class="lc-block">
-        <div editable="rich" class="">
+        <div editable="rich">
           <h2 class="h2">Trusted by</h2>
         </div>
       </div>
@@ -149,28 +149,36 @@
 <!--End of Social Proof-->
 <!--Share and Find Section-->
 <h2 class="h2 text-center mt-5">Share and Find Lessons</h2>
-<div class="row text-center mt-3">
-  <div class="col-sm-6">
-    <!--First Card-->
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="lc-block border-top col-md-6 offset-md-3">
+  <div editable="rich">
+    <h2 class="fw-bolder"><br /></h2>
+  </div>
+</div>
+<!-- Improve your lesson plans -->
+<div class="row row-cols-2 g-3">
+    <div class="col">
+      <div class="card">
+        <img src="https://plus.unsplash.com/premium_photo-1663126346116-f0ccaf232268?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dGVhY2hpbmd8ZW58MHx8MHx8fDA%3D" 
+            class="card-img-top"  loading="lazy" />
+        <div class="card-body">
+          <h5 class="card-title">Make Teaching Easier</h5>
+          <p class="card-text">
+            With top-rated lesson plans from other teachers sharing their knowledge. Worry no more about quality lesson plans.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <!--Second Card-->
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!-- Second Card -->
+    <div class="col">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1608600712992-03e5325d94c8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGxlc3NvbnxlbnwwfHwwfHx8MA%3D%3D" 
+            class="card-img-top" loading="lazy" />
+        <div class="card-body">
+          <h5 class="card-title">Improve your lesson plans</h5>
+          <p class="card-text">
+            With hundreds of high quality lesson plans to choose from and see how other teachers use the plan in a live classroom. 
+          </p>
+        </div>
       </div>
     </div>
   </div>
