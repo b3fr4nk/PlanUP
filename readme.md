@@ -31,10 +31,9 @@
 - VSCode, Git and GitHub
 
 ## Features
-
-- Sign In: users can sign in to their existing account
-- Sign Up: users can sign up and create an account
-- Awesome feature 3 comming soon
+- Authenication 
+- Users can see posts
+- Users can create posts
 
 <!--
 ## Screenshots
@@ -42,16 +41,14 @@
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 ## Setup
-
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-- To start create a new folder and navigate to the folder you created
+- Clone the project
+- Then create a new folder and navigate to the folder you created
 - Create a virtual environment by running `python3 -m venv venv` in your terminal, for Windows omit the 3
 - Naivagte to your virtual environment to activtate using `source venv/bin/activate` for Mac
 
 # Note the virtual environment is recommended to avoid conflicts with global Python
 
-- After activating the virtual environment install the dependencies needed using pip or pip3 for Mac
+- After activating the virtual environment install the dependencies needed using pip or pip3
 - Start coding your project just remember to activate and deactivate your virtual environment
 
 ## Usage
@@ -67,22 +64,16 @@ How does one go about using it?
 Project is: _in progress_
 
 ## Room for Improvement
-
-Room for improvement:
-
 - Improvement to be done 1
 - Improvement to be done 2
 
 To do:
-
 - Feature to be added 1
 - Feature to be added 2
 
 ## Acknowledgements
-
 - This project was inspired by Reddit
 
 ## DevTeam
-
 Created by [@el634dev](https://github.com/el634dev)
 Created by [@b3fr4nk](https://github.com/b3fr4nk)
